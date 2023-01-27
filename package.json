@@ -1,0 +1,15 @@
+{
+  "name": "stripe-eshop-no-admin-panel",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "start:api": "npm run start:dev --prefix api"
+  },
+  "author": {
+    "name": "Andrew Novak",
+    "email": "contact@andrewnovak.co.uk"
+  },
+  "devDependencies": {
+    "concurrently": "^7.6.0"
+  }
+}
