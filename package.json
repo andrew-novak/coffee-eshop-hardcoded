@@ -3,7 +3,9 @@
   "version": "1.0.0",
   "private": true,
   "scripts": {
-    "start:api": "npm run start:dev --prefix api"
+    "start:api": "npm run start:dev --prefix api",
+    "start:client": "npm run start --prefix client",
+    "start:all": "concurrently \"npm run start:api\" \"npm run start:client\""
   },
   "author": {
     "name": "Andrew Novak",
