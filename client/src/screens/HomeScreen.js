@@ -4,9 +4,11 @@ import {
   Grid,
   Card,
   CardMedia,
+  CardContent,
   ButtonBase,
   Typography,
 } from "@mui/material";
+import { useTheme } from "@mui/material/styles";
 
 import Screen from "components/Screen";
 import image from "productImages/product0-img6.jpeg";
@@ -18,6 +20,7 @@ const products = [
 
 const HomeScreen = () => {
   const navigate = useNavigate();
+  const theme = useTheme();
   return (
     <Screen>
       <Container maxWidth={2000}>
@@ -30,14 +33,36 @@ const HomeScreen = () => {
                   sx={{ display: "block", textAlign: "initial", width: "100%" }}
                   onClick={() => navigate(`/product/${product.id}`)}
                 >
-                  <CardMedia
-                    component="img"
-                    height="200"
-                    image={image}
-                    alt={product.title}
+                  {/*
+                  sx={{
+                    height: 0,
+                    paddingTop: theme.custom.heightPercentRatios["1:1"],
+                  }}
+                */}
+                  <div
+                    title={product.title}
+                    style={{
+                      backgroundImage: `url(${image})`,
+                      backgroundSize: "cover",
+                      height: 0,
+                      paddingTop: theme.heightPercentRatios["1:1"],
+                      width: "100%",
+                    }}
                   />
-                  <Typography>{product.title}</Typography>
-                  <Typography>{product.price}</Typography>
+                  <CardContent
+                    sx={{
+                      display: "flex",
+                      flexDirection: "row",
+                      justifyContent: "space-between",
+                    }}
+                  >
+                    <Typography sx={{ fontSize: 30 }}>
+                      {product.title}
+                    </Typography>
+                    <Typography sx={{ fontSize: 30 }}>
+                      {product.price}
+                    </Typography>
+                  </CardContent>
                 </ButtonBase>
               </Card>
             </Grid>
