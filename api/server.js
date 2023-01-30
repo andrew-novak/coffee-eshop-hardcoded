@@ -1,4 +1,5 @@
 const express = require("express");
+const cors = require("cors");
 
 const rootRouter = require("./routes");
 
@@ -12,6 +13,8 @@ const NODE_ENV = process.env.NODE_ENV;
 const PORT = process.env.API_PORT;
 
 const app = express();
+
+app.use(cors());
 
 if (NODE_ENV === "development") {
   app.use((req, res, next) => {

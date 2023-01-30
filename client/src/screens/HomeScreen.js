@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import {
   Container,
@@ -9,21 +10,23 @@ import {
   Typography,
 } from "@mui/material";
 import { useTheme } from "@mui/material/styles";
+import { connect } from "react-redux";
 
+import getProducts from "actions/getProducts";
 import Screen from "components/Screen";
 import image from "productImages/product0-img6.jpeg";
 
-const products = [
-  { id: 0, title: "T-Shirt", price: "£29.99" },
-  { id: 1, title: "Jumper", price: "£42.00" },
-];
-
-const HomeScreen = () => {
+const HomeScreen = ({ products, getProducts }) => {
   const navigate = useNavigate();
   const theme = useTheme();
+
+  useEffect(() => {
+    getProducts();
+  }, [getProducts]);
+
   return (
     <Screen>
-      <Container maxWidth={2000}>
+      <Container maxWidth={false} sx={{ maxWidth: 2000 }}>
         <h1>Home</h1>
         <Grid container spacing={2}>
           {products.map((product, index) => (
@@ -45,7 +48,7 @@ const HomeScreen = () => {
                       backgroundImage: `url(${image})`,
                       backgroundSize: "cover",
                       height: 0,
-                      paddingTop: theme.heightPercentRatios["1:1"],
+                      paddingTop: theme.custom.heightPercentRatios["1:1"],
                       width: "100%",
                     }}
                   />
@@ -72,4 +75,10 @@ const HomeScreen = () => {
     </Screen>
   );
 };
-export default HomeScreen;
+
+const mapState = (state) => {
+  const { products } = state;
+  return { products };
+};
+
+export default connect(mapState, { getProducts })(HomeScreen);

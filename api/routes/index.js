@@ -1,6 +1,7 @@
 const express = require("express");
 
-// import subroute middlewares
+// import subroutes
+const getProducts = require("./getProducts");
 
 const router = express.Router();
 
@@ -19,10 +20,7 @@ router.options("/*", (req, res, next) => {
 });
 */
 
-/*
-use imported subroute middlewares
-e.g.:
-router.use("/products", productsRoute);
-*/
+// use imported subroute middlewares
+router.get("/products", getProducts);
 
 module.exports = router;
