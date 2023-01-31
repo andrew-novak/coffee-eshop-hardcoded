@@ -1,16 +1,26 @@
-import { useEffect } from "react";
+import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { useTheme } from "@mui/material/styles";
-import { Container, Grid, Card, CardMedia, Typography } from "@mui/material";
+import {
+  Container,
+  Grid,
+  Card,
+  CardMedia,
+  Typography,
+  TextField,
+  Button,
+} from "@mui/material";
 import { connect } from "react-redux";
 
 import getProduct from "actions/getProduct";
+import addToCart from "actions/addToCart";
 import Screen from "components/Screen";
 import image from "productImages/product0-img6.jpeg";
 
-const HomeScreen = ({ product, getProduct }) => {
+const HomeScreen = ({ product, cart, getProduct, addToCart }) => {
   const { productId } = useParams();
   const theme = useTheme();
+  const [quantity, setQuantity] = useState("0");
 
   useEffect(() => {
     getProduct(productId);
@@ -34,14 +44,23 @@ const HomeScreen = ({ product, getProduct }) => {
         />
         <Typography>{product.title}</Typography>
         <Typography>{product.price}</Typography>
+        <TextField
+          label="Quantity"
+          type="number"
+          value={quantity}
+          onChange={(event) => setQuantity(event.target.value)}
+        />
+        <Button onClick={() => addToCart(cart, productId, parseInt(quantity))}>
+          Add to cart
+        </Button>
       </Container>
     </Screen>
   );
 };
 
 const mapState = (state) => {
-  const { product } = state;
-  return { product };
+  const { cart, product } = state;
+  return { cart, product };
 };
 
-export default connect(mapState, { getProduct })(HomeScreen);
+export default connect(mapState, { getProduct, addToCart })(HomeScreen);
