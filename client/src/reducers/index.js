@@ -1,10 +1,12 @@
 import { combineReducers } from "redux";
 
 import products from "./products";
+import product from "./product";
 import { RESET_STATE } from "constants/actionTypes";
 
 const appReducer = combineReducers({
   products,
+  product,
 });
 
 const rootReducer = (state, action) => {

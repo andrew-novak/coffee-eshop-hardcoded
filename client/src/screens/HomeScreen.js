@@ -1,5 +1,6 @@
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import { useTheme } from "@mui/material/styles";
 import {
   Container,
   Grid,
@@ -9,7 +10,6 @@ import {
   ButtonBase,
   Typography,
 } from "@mui/material";
-import { useTheme } from "@mui/material/styles";
 import { connect } from "react-redux";
 
 import getProducts from "actions/getProducts";
@@ -47,9 +47,9 @@ const HomeScreen = ({ products, getProducts }) => {
                     style={{
                       backgroundImage: `url(${image})`,
                       backgroundSize: "cover",
+                      width: "100%",
                       height: 0,
                       paddingTop: theme.custom.heightPercentRatios["1:1"],
-                      width: "100%",
                     }}
                   />
                   <CardContent
