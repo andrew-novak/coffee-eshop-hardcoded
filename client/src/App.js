@@ -6,6 +6,7 @@ import store from "store";
 import theme from "theme";
 import HomeScreen from "screens/HomeScreen";
 import ProductScreen from "screens/ProductScreen";
+import CartScreen from "screens/CartScreen";
 import NotFoundScreen from "screens/NotFoundScreen";
 
 const App = () => (
@@ -21,6 +22,7 @@ const App = () => (
               exact
               element={<ProductScreen />}
             />
+            <Route path="/cart" exact element={<CartScreen />} />
             <Route path="*" element={<NotFoundScreen />} />
           </Routes>
         </BrowserRouter>

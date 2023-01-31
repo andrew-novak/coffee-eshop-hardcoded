@@ -1,5 +1,5 @@
 import { useNavigate } from "react-router-dom";
-import { IconButton, Badge } from "@mui/material";
+import { IconButton, Badge, Container } from "@mui/material";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import TwitterIcon from "@mui/icons-material/Twitter";
 import InstagramIcon from "@mui/icons-material/Instagram";
@@ -52,7 +52,7 @@ const Screen = ({ children, cart }) => {
           <IconButton size="large" onClick={() => navigate("/")}>
             <ShoppingCartIcon fontSize="large" />
           </IconButton>
-          <IconButton size="large">
+          <IconButton size="large" onClick={() => navigate("/cart")}>
             <Badge badgeContent={totalQuantity} color="primary">
               <ShoppingCartIcon fontSize="large" />
             </Badge>
@@ -78,7 +78,11 @@ const Screen = ({ children, cart }) => {
           </IconButton>
         </div>
       </div>
-      <div style={{ padding: navBarMargin }}>{children}</div>
+      <div style={{ padding: navBarMargin }}>
+        <Container maxWidth={false} sx={{ maxWidth: 2000 }}>
+          {children}
+        </Container>
+      </div>
     </div>
   );
 };

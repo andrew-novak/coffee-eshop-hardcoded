@@ -2,7 +2,6 @@ import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { useTheme } from "@mui/material/styles";
 import {
-  Container,
   Grid,
   Card,
   CardMedia,
@@ -40,64 +39,62 @@ const HomeScreen = ({
 
   return (
     <Screen>
-      <Container maxWidth={false} sx={{ maxWidth: 2000 }}>
-        <h1>Product ID: {productId}</h1>
-        <div
-          title={product.title}
-          style={{
-            backgroundImage: `url(${image})`,
-            backgroundSize: "cover",
-            width: 400,
-            height: 0,
-            paddingTop: theme.custom.heightPercentRatios["1:1"],
-            overflow: "hidden",
-            boxSizing: "border-box",
+      <h1>Product ID: {productId}</h1>
+      <div
+        title={product.title}
+        style={{
+          backgroundImage: `url(${image})`,
+          backgroundSize: "cover",
+          width: 400,
+          height: 0,
+          paddingTop: theme.custom.heightPercentRatios["1:1"],
+          overflow: "hidden",
+          boxSizing: "border-box",
+        }}
+      />
+      <Typography>{product.title}</Typography>
+      <Typography>{product.price}</Typography>
+      {!isAlreadyInCart && (
+        <Button
+          onClick={() => {
+            setQuantity(1);
+            setCartProductQuantity(cart, productId, 1);
           }}
-        />
-        <Typography>{product.title}</Typography>
-        <Typography>{product.price}</Typography>
-        {!isAlreadyInCart && (
-          <Button
-            onClick={() => {
-              setQuantity(1);
-              setCartProductQuantity(cart, productId, 1);
+        >
+          Add to cart
+        </Button>
+      )}
+      {isAlreadyInCart && (
+        <>
+          <TextField
+            label="Quantity"
+            type="number"
+            InputProps={{
+              inputProps: { min: 0 },
             }}
-          >
-            Add to cart
+            value={quantity}
+            onChange={(event) => {
+              const input = event.target.value;
+
+              // update displayed number
+              setQuantity(input);
+
+              if (isAlreadyInCart && parseInt(input) > 0) {
+                // update cart as well
+                setCartProductQuantity(cart, productId, parseInt(input));
+              }
+
+              if (isAlreadyInCart && parseInt(input) <= 0) {
+                // remove product from cart
+                removeProductFromCart(cart, productId);
+              }
+            }}
+          />
+          <Button onClick={() => removeProductFromCart(cart, productId)}>
+            Remove from cart
           </Button>
-        )}
-        {isAlreadyInCart && (
-          <>
-            <TextField
-              label="Quantity"
-              type="number"
-              InputProps={{
-                inputProps: { min: 0 },
-              }}
-              value={quantity}
-              onChange={(event) => {
-                const input = event.target.value;
-
-                // update displayed number
-                setQuantity(input);
-
-                if (isAlreadyInCart && parseInt(input) > 0) {
-                  // update cart as well
-                  setCartProductQuantity(cart, productId, parseInt(input));
-                }
-
-                if (isAlreadyInCart && parseInt(input) <= 0) {
-                  // remove product from cart
-                  removeProductFromCart(cart, productId);
-                }
-              }}
-            />
-            <Button onClick={() => removeProductFromCart(cart, productId)}>
-              Remove from cart
-            </Button>
-          </>
-        )}
-      </Container>
+        </>
+      )}
     </Screen>
   );
 };

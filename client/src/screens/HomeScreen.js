@@ -2,7 +2,6 @@ import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { useTheme } from "@mui/material/styles";
 import {
-  Container,
   Grid,
   Card,
   CardMedia,
@@ -26,52 +25,46 @@ const HomeScreen = ({ products, getProducts }) => {
 
   return (
     <Screen>
-      <Container maxWidth={false} sx={{ maxWidth: 2000 }}>
-        <h1>Home</h1>
-        <Grid container spacing={2}>
-          {products.map((product, index) => (
-            <Grid item key={index} xs={4}>
-              <Card sx={{ borderRadius: 0, boxShadow: 0 }}>
-                <ButtonBase
-                  sx={{ display: "block", textAlign: "initial", width: "100%" }}
-                  onClick={() => navigate(`/product/${product.id}`)}
-                >
-                  {/*
+      <h1>Home</h1>
+      <Grid container spacing={2}>
+        {products.map((product, index) => (
+          <Grid item key={index} xs={4}>
+            <Card sx={{ borderRadius: 0, boxShadow: 0 }}>
+              <ButtonBase
+                sx={{ display: "block", textAlign: "initial", width: "100%" }}
+                onClick={() => navigate(`/product/${product.id}`)}
+              >
+                {/*
                   sx={{
                     height: 0,
                     paddingTop: theme.custom.heightPercentRatios["1:1"],
                   }}
                 */}
-                  <div
-                    title={product.title}
-                    style={{
-                      backgroundImage: `url(${image})`,
-                      backgroundSize: "cover",
-                      width: "100%",
-                      height: 0,
-                      paddingTop: theme.custom.heightPercentRatios["1:1"],
-                    }}
-                  />
-                  <CardContent
-                    sx={{
-                      display: "flex",
-                      flexDirection: "row",
-                      justifyContent: "space-between",
-                    }}
-                  >
-                    <Typography sx={{ fontSize: 30 }}>
-                      {product.title}
-                    </Typography>
-                    <Typography sx={{ fontSize: 30 }}>
-                      {product.price}
-                    </Typography>
-                  </CardContent>
-                </ButtonBase>
-              </Card>
-            </Grid>
-          ))}
-        </Grid>
-      </Container>
+                <div
+                  title={product.title}
+                  style={{
+                    backgroundImage: `url(${image})`,
+                    backgroundSize: "cover",
+                    width: "100%",
+                    height: 0,
+                    paddingTop: theme.custom.heightPercentRatios["1:1"],
+                  }}
+                />
+                <CardContent
+                  sx={{
+                    display: "flex",
+                    flexDirection: "row",
+                    justifyContent: "space-between",
+                  }}
+                >
+                  <Typography sx={{ fontSize: 30 }}>{product.title}</Typography>
+                  <Typography sx={{ fontSize: 30 }}>{product.price}</Typography>
+                </CardContent>
+              </ButtonBase>
+            </Card>
+          </Grid>
+        ))}
+      </Grid>
     </Screen>
   );
 };
