@@ -13,14 +13,26 @@ import {
 import { connect } from "react-redux";
 
 import getProduct from "actions/getProduct";
-import addToCart from "actions/addToCart";
+import setCartProductQuantity from "actions/setCartProductQuantity";
+import removeProductFromCart from "actions/removeProductFromCart";
 import Screen from "components/Screen";
 import image from "productImages/product0-img6.jpeg";
 
-const HomeScreen = ({ product, cart, getProduct, addToCart }) => {
+const HomeScreen = ({
+  product,
+  cart,
+  getProduct,
+  setCartProductQuantity,
+  removeProductFromCart,
+}) => {
   const { productId } = useParams();
   const theme = useTheme();
-  const [quantity, setQuantity] = useState("0");
+  const foundProduct = cart.find((product) => product.id === productId);
+  console.log("foundProduct:", foundProduct);
+  const isAlreadyInCart = foundProduct !== undefined;
+  const [quantity, setQuantity] = useState(
+    foundProduct ? foundProduct.quantity : "0"
+  );
 
   useEffect(() => {
     getProduct(productId);
@@ -44,15 +56,47 @@ const HomeScreen = ({ product, cart, getProduct, addToCart }) => {
         />
         <Typography>{product.title}</Typography>
         <Typography>{product.price}</Typography>
-        <TextField
-          label="Quantity"
-          type="number"
-          value={quantity}
-          onChange={(event) => setQuantity(event.target.value)}
-        />
-        <Button onClick={() => addToCart(cart, productId, parseInt(quantity))}>
-          Add to cart
-        </Button>
+        {!isAlreadyInCart && (
+          <Button
+            onClick={() => {
+              setQuantity(1);
+              setCartProductQuantity(cart, productId, 1);
+            }}
+          >
+            Add to cart
+          </Button>
+        )}
+        {isAlreadyInCart && (
+          <>
+            <TextField
+              label="Quantity"
+              type="number"
+              InputProps={{
+                inputProps: { min: 0 },
+              }}
+              value={quantity}
+              onChange={(event) => {
+                const input = event.target.value;
+
+                // update displayed number
+                setQuantity(input);
+
+                if (isAlreadyInCart && parseInt(input) > 0) {
+                  // update cart as well
+                  setCartProductQuantity(cart, productId, parseInt(input));
+                }
+
+                if (isAlreadyInCart && parseInt(input) <= 0) {
+                  // remove product from cart
+                  removeProductFromCart(cart, productId);
+                }
+              }}
+            />
+            <Button onClick={() => removeProductFromCart(cart, productId)}>
+              Remove from cart
+            </Button>
+          </>
+        )}
       </Container>
     </Screen>
   );
@@ -63,4 +107,8 @@ const mapState = (state) => {
   return { cart, product };
 };
 
-export default connect(mapState, { getProduct, addToCart })(HomeScreen);
+export default connect(mapState, {
+  getProduct,
+  setCartProductQuantity,
+  removeProductFromCart,
+})(HomeScreen);

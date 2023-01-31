@@ -1,15 +1,20 @@
 import { useNavigate } from "react-router-dom";
-import { IconButton } from "@mui/material";
+import { IconButton, Badge } from "@mui/material";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import TwitterIcon from "@mui/icons-material/Twitter";
 import InstagramIcon from "@mui/icons-material/Instagram";
+import { connect } from "react-redux";
 
 const navButtonSize = 59;
 const navPadding = 10;
 const navBarMargin = navButtonSize + navPadding * 2;
 
-const Screen = ({ children }) => {
+const Screen = ({ children, cart }) => {
   const navigate = useNavigate();
+  const totalQuantity = cart.reduce(
+    (accumulator, product) => accumulator + product.quantity,
+    0
+  );
   return (
     <div
       style={{
@@ -48,7 +53,9 @@ const Screen = ({ children }) => {
             <ShoppingCartIcon fontSize="large" />
           </IconButton>
           <IconButton size="large">
-            <ShoppingCartIcon fontSize="large" />
+            <Badge badgeContent={totalQuantity} color="primary">
+              <ShoppingCartIcon fontSize="large" />
+            </Badge>
           </IconButton>
         </div>
         {/* left social media bar */}
@@ -76,4 +83,9 @@ const Screen = ({ children }) => {
   );
 };
 
-export default Screen;
+const mapState = (state) => {
+  const { cart } = state;
+  return { cart };
+};
+
+export default connect(mapState)(Screen);
