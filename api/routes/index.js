@@ -2,6 +2,7 @@ const express = require("express");
 
 // import subroutes
 const products = require("./products");
+const createCheckoutSession = require("./createCheckoutSession");
 
 const router = express.Router();
 
@@ -22,5 +23,6 @@ router.options("/*", (req, res, next) => {
 
 // use imported subroute middlewares
 router.use("/products", products);
+router.post("/create-checkout-session", createCheckoutSession);
 
 module.exports = router;

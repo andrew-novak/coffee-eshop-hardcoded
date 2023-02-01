@@ -7,6 +7,8 @@ import theme from "theme";
 import HomeScreen from "screens/HomeScreen";
 import ProductScreen from "screens/ProductScreen";
 import CartScreen from "screens/CartScreen";
+import PaymentSuccessScreen from "screens/PaymentSuccessScreen";
+import PaymentFailureScreen from "screens/PaymentFailureScreen";
 import NotFoundScreen from "screens/NotFoundScreen";
 
 const App = () => (
@@ -23,6 +25,11 @@ const App = () => (
               element={<ProductScreen />}
             />
             <Route path="/cart" exact element={<CartScreen />} />
+            <Route
+              path="/payment-success"
+              exact
+              element={<PaymentSuccessScreen />}
+            />
             <Route path="*" element={<NotFoundScreen />} />
           </Routes>
         </BrowserRouter>
