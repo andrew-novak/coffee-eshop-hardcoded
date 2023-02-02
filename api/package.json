@@ -3,9 +3,11 @@
   "version": "1.0.0",
   "private": true,
   "scripts": {
-    "start:dev": "nodemon --require dotenv/config ./server.js"
+    "start:prod": "cross-env NODE_ENV=production node server.js",
+    "start:dev": "cross-env NODE_ENV=development nodemon --require dotenv/config server.js"
   },
   "devDependencies": {
+    "cross-env": "^7.0.3",
     "dotenv": "^16.0.3",
     "nodemon": "^2.0.20",
     "serve-index": "^1.9.1"

@@ -6,7 +6,7 @@ const products = require("./products");
 const createCheckoutSession = require("./createCheckoutSession");
 
 const NODE_ENV = process.env.NODE_ENV;
-const PROD_MEDIA = process.env.PROD_MEDIA;
+const PROD_MEDIA = process.env.STRIPE_ESHOP_NO_ADMIN_PANEL_PROD_MEDIA;
 
 const router = express.Router();
 

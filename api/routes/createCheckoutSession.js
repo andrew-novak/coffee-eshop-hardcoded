@@ -2,7 +2,7 @@ const stripe = require("../stripe");
 
 const Product = require("../models/Product");
 
-const CLIENT_URL = process.env.CLIENT_URL;
+const CLIENT_URL = process.env.STRIPE_ESHOP_NO_ADMIN_PANEL_CLIENT_URL;
 
 const createCheckoutSession = async (req, res) => {
   const { cart } = req.body;
