@@ -23,6 +23,11 @@ const HomeScreen = ({ products, getProducts }) => {
     getProducts();
   }, [getProducts]);
 
+  const priceFormatter = new Intl.NumberFormat("en-GB", {
+    style: "currency",
+    currency: "GBP",
+  });
+
   return (
     <Screen>
       <h1>Home</h1>
@@ -58,7 +63,9 @@ const HomeScreen = ({ products, getProducts }) => {
                   }}
                 >
                   <Typography sx={{ fontSize: 30 }}>{product.title}</Typography>
-                  <Typography sx={{ fontSize: 30 }}>{product.price}</Typography>
+                  <Typography sx={{ fontSize: 30 }}>
+                    {priceFormatter.format(product.price)}
+                  </Typography>
                 </CardContent>
               </ButtonBase>
             </Card>

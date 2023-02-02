@@ -8,7 +8,6 @@ import HomeScreen from "screens/HomeScreen";
 import ProductScreen from "screens/ProductScreen";
 import CartScreen from "screens/CartScreen";
 import PaymentSuccessScreen from "screens/PaymentSuccessScreen";
-import PaymentFailureScreen from "screens/PaymentFailureScreen";
 import NotFoundScreen from "screens/NotFoundScreen";
 
 const App = () => (

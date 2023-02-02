@@ -1,16 +1,21 @@
 const stripe = require("../stripe");
 
-const PRICE_ID = process.env.PRICE_ID;
+const Product = require("../models/Product");
+
 const CLIENT_URL = process.env.CLIENT_URL;
 
 const createCheckoutSession = async (req, res) => {
   const { cart } = req.body;
-  const line_items = cart.map((product) => {
-    return {
-      price: PRICE_ID,
-      quantity: product.quantity,
-    };
+
+  // get all products related to this cart
+  const ids = cart.map(({ id }) => id);
+  const products = await Product.find({ id: { $in: ids } });
+
+  const line_items = cart.map(({ id, quantity }) => {
+    const price = products.find((product) => product.id === id).stripePriceId;
+    return { price, quantity };
   });
+
   const session = await stripe.checkout.sessions.create({
     mode: "payment",
     line_items,

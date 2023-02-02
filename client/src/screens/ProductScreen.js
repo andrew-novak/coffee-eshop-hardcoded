@@ -24,7 +24,8 @@ const HomeScreen = ({
   setCartProductQuantity,
   removeProductFromCart,
 }) => {
-  const { productId } = useParams();
+  const params = useParams();
+  const productId = parseInt(params.productId);
   const theme = useTheme();
   const foundProduct = cart.find((product) => product.id === productId);
   console.log("foundProduct:", foundProduct);
@@ -36,6 +37,11 @@ const HomeScreen = ({
   useEffect(() => {
     getProduct(productId);
   }, [getProduct, productId]);
+
+  const priceFormatter = new Intl.NumberFormat("en-GB", {
+    style: "currency",
+    currency: "GBP",
+  });
 
   return (
     <Screen>
@@ -53,7 +59,8 @@ const HomeScreen = ({
         }}
       />
       <Typography>{product.title}</Typography>
-      <Typography>{product.price}</Typography>
+      <Typography>{priceFormatter.format(product.price)}</Typography>
+      <Typography>{product.description}</Typography>
       {!isAlreadyInCart && (
         <Button
           onClick={() => {

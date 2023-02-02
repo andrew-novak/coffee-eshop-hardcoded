@@ -1,8 +1,12 @@
 const express = require("express");
+const path = require("path");
 
 // import subroutes
 const products = require("./products");
 const createCheckoutSession = require("./createCheckoutSession");
+
+const NODE_ENV = process.env.NODE_ENV;
+const PROD_MEDIA = process.env.PROD_MEDIA;
 
 const router = express.Router();
 
@@ -20,6 +24,17 @@ router.options("/*", (req, res, next) => {
   res.sendStatus(200);
 });
 */
+
+// serve development media
+if (NODE_ENV === "development") {
+  const mediaRoot =
+    NODE_ENV === "production"
+      ? PROD_MEDIA
+      : path.join(__dirname, "../devMedia");
+  console.log(`Media root path: ${mediaRoot}`);
+  router.use("/media", require("serve-index")(mediaRoot));
+  router.use("/media", express.static(mediaRoot));
+}
 
 // use imported subroute middlewares
 router.use("/products", products);
