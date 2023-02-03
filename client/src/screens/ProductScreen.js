@@ -15,7 +15,7 @@ import getProduct from "actions/getProduct";
 import setCartProductQuantity from "actions/setCartProductQuantity";
 import removeProductFromCart from "actions/removeProductFromCart";
 import Screen from "components/Screen";
-import image from "productImages/product0-img6.jpeg";
+import getMediaFileUrl from "helpers/getMediaFileUrl";
 
 const HomeScreen = ({
   product,
@@ -49,7 +49,10 @@ const HomeScreen = ({
       <div
         title={product.title}
         style={{
-          backgroundImage: `url(${image})`,
+          backgroundImage: `url(${getMediaFileUrl(
+            product.id,
+            product.mediaFilenames[0]
+          )})`,
           backgroundSize: "cover",
           width: 400,
           height: 0,

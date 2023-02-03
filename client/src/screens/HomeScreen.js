@@ -13,7 +13,7 @@ import { connect } from "react-redux";
 
 import getProducts from "actions/getProducts";
 import Screen from "components/Screen";
-import image from "productImages/product0-img6.jpeg";
+import getMediaFileUrl from "helpers/getMediaFileUrl";
 
 const HomeScreen = ({ products, getProducts }) => {
   const navigate = useNavigate();
@@ -48,7 +48,10 @@ const HomeScreen = ({ products, getProducts }) => {
                 <div
                   title={product.title}
                   style={{
-                    backgroundImage: `url(${image})`,
+                    backgroundImage: `url(${getMediaFileUrl(
+                      product.id,
+                      product.mediaFilenames[0]
+                    )})`,
                     backgroundSize: "cover",
                     width: "100%",
                     height: 0,
