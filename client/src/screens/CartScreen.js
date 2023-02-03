@@ -15,7 +15,6 @@ import { connect } from "react-redux";
 import getProducts from "actions/getProducts";
 import goToCheckout from "actions/goToCheckout";
 import Screen from "components/Screen";
-import image from "productImages/product0-img6.jpeg";
 
 const CartScreen = ({ cart, goToCheckout }) => {
   const navigate = useNavigate();
