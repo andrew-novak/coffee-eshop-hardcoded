@@ -25,4 +25,5 @@ yarn-error.log*
 
 
 # Custom:
+.env
 src/productImages/*
