@@ -16,21 +16,15 @@ if (apiUrl === undefined) {
   );
 }
 
-const projectRoot = path.join(__dirname, "..");
-const files = [`${projectRoot}/client/.env`];
+const envFile = path.join(__dirname, "..", ".env");
 
-for (let i = 0; i < files.length; i++) {
-  const file = files[i];
-  fs.access(file, fs.F_OK, (err) => {
-    if (!err)
-      throw new Error(
-        chalk.whiteBright.bgRed.bold(`The file ${file} already exists`)
-      );
-  });
-}
+fs.access(envFile, fs.F_OK, (err) => {
+  if (!err) {
+    throw new Error(
+      chalk.whiteBright.bgRed.bold(`The file ${file} already exists`)
+    );
+  }
+});
 
 const content = `REACT_APP_API_URL=${apiUrl}`;
-
-for (let i = 0; i < files.length; i++) {
-  writeFile(files[i], content);
-}
+writeFile(envFile, content);
