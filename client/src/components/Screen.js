@@ -9,7 +9,7 @@ const navButtonSize = 59;
 const navPadding = 10;
 const navBarMargin = navButtonSize + navPadding * 2;
 
-const Screen = ({ children, cart }) => {
+const Screen = ({ children, maxWidth = 2000, cart }) => {
   const navigate = useNavigate();
   const totalQuantity = cart.reduce(
     (accumulator, product) => accumulator + product.quantity,
@@ -79,7 +79,7 @@ const Screen = ({ children, cart }) => {
         </div>
       </div>
       <div style={{ padding: navBarMargin }}>
-        <Container maxWidth={false} sx={{ maxWidth: 2000 }}>
+        <Container maxWidth={false} sx={{ maxWidth }}>
           {children}
         </Container>
       </div>

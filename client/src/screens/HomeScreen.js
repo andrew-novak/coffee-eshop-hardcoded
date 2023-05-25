@@ -33,7 +33,7 @@ const HomeScreen = ({ products, getProducts }) => {
       <h1>Home</h1>
       <Grid container spacing={2}>
         {products.map((product, index) => (
-          <Grid item key={index} xs={4}>
+          <Grid item key={index} xs={12} sm={6} md={4} xl={3}>
             <Card sx={{ borderRadius: 0, boxShadow: 0 }}>
               <ButtonBase
                 sx={{ display: "block", textAlign: "initial", width: "100%" }}
@@ -61,12 +61,21 @@ const HomeScreen = ({ products, getProducts }) => {
                 <CardContent
                   sx={{
                     display: "flex",
-                    flexDirection: "row",
+                    flexDirection: "column",
                     justifyContent: "space-between",
                   }}
                 >
-                  <Typography sx={{ fontSize: 30 }}>{product.title}</Typography>
-                  <Typography sx={{ fontSize: 30 }}>
+                  <Typography
+                    variant="h4"
+                    sx={{ fontSize: 24, marginBottom: 1 }}
+                  >
+                    {product.title}
+                  </Typography>
+                  <Typography
+                    variant="h4"
+                    align="right"
+                    sx={{ fontSize: 24, fontWeight: 600 }}
+                  >
                     {priceFormatter.format(product.price)}
                   </Typography>
                 </CardContent>
