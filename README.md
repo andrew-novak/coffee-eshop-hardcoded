@@ -2,7 +2,7 @@
 
 Coffee Shop is an engaging portfolio website powered by Stripe, offering a delightful online shopping experience for coffee enthusiasts, where they can explore and purchase a variety of quality coffee products.
 
-To run API and client in development:
+## To run API and client in development:
 
 1. Make sure you are in the project root directory.
 
@@ -19,7 +19,7 @@ To run API and client in development:
 4. Run:
    `npm run start:all`
 
-To deploy API for production:
+## To deploy API for production:
 
 1. Make sure you are in the project root directory.
 
@@ -37,7 +37,7 @@ To deploy API for production:
 
 5. Run using PM2
 
-To deploy client for production:
+## To deploy client for production:
 
 1. Make sure you are in the project root directory.
 
