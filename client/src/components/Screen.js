@@ -5,6 +5,8 @@ import TwitterIcon from "@mui/icons-material/Twitter";
 import InstagramIcon from "@mui/icons-material/Instagram";
 import { connect } from "react-redux";
 
+import shopIcon from "static/shopIcon.png";
+
 const navButtonSize = 59;
 const navPadding = 10;
 const navBarMargin = navButtonSize + navPadding * 2;
@@ -22,7 +24,7 @@ const Screen = ({ children, maxWidth = 2000, cart }) => {
         width: "100%",
         height: "100%",
         boxSizing: "border-box",
-        backgroundColor: "lightblue",
+        backgroundColor: "#fcc9c9",
         minHeight: "100vh",
       }}
     >
@@ -49,9 +51,16 @@ const Screen = ({ children, maxWidth = 2000, cart }) => {
             padding: navPadding,
           }}
         >
-          <IconButton size="large" onClick={() => navigate("/")}>
-            <ShoppingCartIcon fontSize="large" />
-          </IconButton>
+          <IconButton
+            size="large"
+            sx={{
+              height: "56px",
+              width: "56px",
+              backgroundImage: `url(${shopIcon})`,
+              backgroundSize: "cover",
+            }}
+            onClick={() => navigate("/")}
+          ></IconButton>
           <IconButton size="large" onClick={() => navigate("/cart")}>
             <Badge badgeContent={totalQuantity} color="primary">
               <ShoppingCartIcon fontSize="large" />

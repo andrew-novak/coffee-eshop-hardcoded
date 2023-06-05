@@ -21,7 +21,7 @@ const envFile = path.join(__dirname, "..", ".env");
 fs.access(envFile, fs.F_OK, (err) => {
   if (!err) {
     throw new Error(
-      chalk.whiteBright.bgRed.bold(`The file ${file} already exists`)
+      chalk.whiteBright.bgRed.bold(`The .env file already exists`)
     );
   }
 });
