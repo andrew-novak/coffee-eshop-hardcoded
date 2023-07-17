@@ -3,6 +3,7 @@ const path = require("path");
 
 // import subroutes
 const products = require("./products");
+const cart = require("./cart");
 const createCheckoutSession = require("./createCheckoutSession");
 
 const NODE_ENV = process.env.NODE_ENV;
@@ -38,6 +39,7 @@ if (NODE_ENV === "development") {
 
 // use imported subroute middlewares
 router.use("/products", products);
+router.use("/cart", cart);
 router.post("/create-checkout-session", createCheckoutSession);
 
 module.exports = router;
