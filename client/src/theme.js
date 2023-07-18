@@ -1,6 +1,14 @@
 import { createTheme } from "@mui/material/styles";
 
 const theme = createTheme({
+  palette: {
+    primary: {
+      main: "#CC3036",
+    },
+    error: {
+      main: "#747474",
+    },
+  },
   custom: {
     heightPercentRatios: {
       "1:1": "100%",

@@ -20,7 +20,7 @@ const Screen = ({ children, maxWidth = 2000, cart }) => {
   return (
     <div
       style={{
-        psoition: "relative",
+        position: "relative",
         width: "100%",
         height: "100%",
         boxSizing: "border-box",

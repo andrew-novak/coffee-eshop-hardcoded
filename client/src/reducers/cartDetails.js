@@ -6,7 +6,7 @@ const initialState = [];
 const cartDetails = (state = initialState, action) => {
   switch (action.type) {
     case SET_CART_DETAILS:
-      return [...action.cartProducts];
+      return [...action.cartDetails];
     default:
       return state;
   }

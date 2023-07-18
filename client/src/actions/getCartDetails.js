@@ -8,7 +8,7 @@ const getCartDetails = (cart) => async (dispatch) => {
     cart,
   });
   const { cartProducts } = response.data;
-  dispatch({ type: SET_CART_DETAILS, cartProducts });
+  dispatch({ type: SET_CART_DETAILS, cartDetails: cartProducts });
 };
 
 export default getCartDetails;

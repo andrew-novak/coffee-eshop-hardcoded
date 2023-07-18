@@ -16,6 +16,18 @@ const createCheckoutSession = async (req, res) => {
     return { price, quantity };
   });
 
+  // Adding shipping cost
+  line_items.push({
+    price_data: {
+      currency: "gbp",
+      product_data: {
+        name: "Shipping Cost",
+      },
+      unit_amount: 1000,
+    },
+    quantity: 1,
+  });
+
   const session = await stripe.checkout.sessions.create({
     mode: "payment",
     line_items,

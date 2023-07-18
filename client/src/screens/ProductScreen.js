@@ -21,7 +21,9 @@ import getProduct from "actions/getProduct";
 import setCartProductQuantity from "actions/setCartProductQuantity";
 import removeProductFromCart from "actions/removeProductFromCart";
 import Screen from "components/Screen";
+import QuantityInput from "components/QuantityInput";
 import getMediaFileUrl from "helpers/getMediaFileUrl";
+import formatPrice from "helpers/formatPrice";
 
 const HomeScreen = ({
   product,
@@ -43,11 +45,6 @@ const HomeScreen = ({
   useEffect(() => {
     getProduct(productId);
   }, [getProduct, productId]);
-
-  const priceFormatter = new Intl.NumberFormat("en-GB", {
-    style: "currency",
-    currency: "GBP",
-  });
 
   const isMobileScreen = useMediaQuery("(max-width:900px)");
 
@@ -108,7 +105,7 @@ const HomeScreen = ({
             align="left"
             style={{ fontSize: 28, paddingBottom: 24, fontWeight: 500 }}
           >
-            {priceFormatter.format(product.price)}
+            {formatPrice(product.price)}
           </Typography>
           <Typography style={{ fontSize: 22, paddingBottom: 36 }}>
             {product.description}
@@ -116,7 +113,6 @@ const HomeScreen = ({
           {!isAlreadyInCart && (
             <Button
               variant="contained"
-              color="success"
               style={{ boxShadow: 0, elevation: 0 }}
               onClick={() => {
                 setQuantity(1);
@@ -151,6 +147,27 @@ const HomeScreen = ({
                   Quantity:
                 </Typography>
               </div>
+              <QuantityInput
+                value={quantity}
+                style={{
+                  paddingBottom: 16,
+                }}
+                onChange={(newQuantity) => {
+                  // update component state
+                  setQuantity(newQuantity);
+                  // update cart
+                  if (isAlreadyInCart && newQuantity > 0) {
+                    setCartProductQuantity(cart, productId, newQuantity);
+                  }
+                  /*
+                  // remove product from cart
+                  if (isAlreadyInCart && newQuantity <= 0) {
+                    removeProductFromCart(cart, productId);
+                  }
+                  */
+                }}
+              />
+              {/*
               <div
                 style={{
                   width: "100%",
@@ -215,6 +232,7 @@ const HomeScreen = ({
                   <RemoveIcon style={{ fontSize: 32 }} />
                 </IconButton>
               </div>
+              */}
               <Button
                 variant="contained"
                 color="error"
