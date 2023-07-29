@@ -9,7 +9,8 @@ import shopIcon from "static/shopIcon.png";
 
 const navButtonSize = 59;
 const navPadding = 10;
-const navBarMargin = navButtonSize + navPadding * 2;
+const navBarMarginTop = navButtonSize + navPadding * 2;
+const navBarMarginSide = navButtonSize;
 
 const Screen = ({ children, maxWidth = 2000, cart }) => {
   const navigate = useNavigate();
@@ -24,7 +25,7 @@ const Screen = ({ children, maxWidth = 2000, cart }) => {
         width: "100%",
         height: "100%",
         boxSizing: "border-box",
-        backgroundColor: "#fcc9c9",
+        //backgroundColor: "#fcc9c9",
         minHeight: "100vh",
       }}
     >
@@ -87,7 +88,16 @@ const Screen = ({ children, maxWidth = 2000, cart }) => {
           </IconButton>
         </div>
       </div>
-      <div style={{ padding: navBarMargin }}>
+
+      {/* normal content */}
+      <div
+        style={{
+          paddingTop: navBarMarginTop,
+          paddingBottom: 22,
+          paddingLeft: navBarMarginSide,
+          paddingRight: navBarMarginSide,
+        }}
+      >
         <Container maxWidth={false} sx={{ maxWidth }}>
           {children}
         </Container>

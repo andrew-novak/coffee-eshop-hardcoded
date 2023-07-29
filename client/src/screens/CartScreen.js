@@ -1,15 +1,7 @@
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { useTheme } from "@mui/material/styles";
-import {
-  Grid,
-  Card,
-  CardMedia,
-  CardContent,
-  ButtonBase,
-  Typography,
-  Button,
-} from "@mui/material";
+import { Typography, Box, Button } from "@mui/material";
 import CircularProgress from "@mui/material/CircularProgress";
 import { connect } from "react-redux";
 
@@ -52,85 +44,91 @@ const CartScreen = ({
     <Screen>
       <h1>Cart</h1>
       {cart.length < 1 && <h3>No products in cart</h3>}
-      {cart.map((product, index) => {
-        const detailedProduct = cartDetails[index];
-        return (
-          <div
-            key={index}
-            style={{
-              display: "flex",
-              flexDirection: "column",
-              gap: "8px",
-            }}
-          >
-            {detailedProduct ? (
+      {cart.length > 0 && (
+        <div style={{ display: "flex", flexDirection: "column", gap: "16px" }}>
+          {cart.map((product, index) => {
+            const detailedProduct = cartDetails[index];
+            return (
               <div
+                key={index}
                 style={{
-                  width: "100%",
                   display: "flex",
-                  alignItems: "center",
-                  backgroundColor: "white",
-                  gap: "40px",
-                  paddingRight: "48px",
+                  flexDirection: "column",
+                  gap: "8px",
                 }}
               >
-                <div
-                  style={{
-                    width: "150px",
-                    height: "150px",
-                    backgroundImage: `url(${getMediaFileUrl(
-                      product.id,
-                      detailedProduct.mediaFilenames[0]
-                    )})`,
-                    backgroundSize: "cover",
-                  }}
-                />
-                <Typography variant="h5" style={{ flexGrow: 1 }}>
-                  {detailedProduct.title}
-                </Typography>
-                <QuantityInput
-                  value={product.quantity}
-                  onChange={(newQuantity) => {
-                    // update cart
-                    if (newQuantity > 0) {
-                      setCartProductQuantity(cart, product.id, newQuantity);
-                    }
-                    /*
+                {detailedProduct ? (
+                  <Box
+                    sx={{
+                      width: "100%",
+                      display: "flex",
+                      alignItems: "center",
+                      backgroundColor: "white",
+                      gap: "40px",
+                      paddingRight: "48px",
+                      boxShadow: 2,
+                    }}
+                  >
+                    <div
+                      style={{
+                        width: "150px",
+                        height: "150px",
+                        backgroundImage: `url(${getMediaFileUrl(
+                          product.id,
+                          detailedProduct.mediaFilenames[0]
+                        )})`,
+                        backgroundSize: "cover",
+                      }}
+                    />
+                    <Typography variant="h5" style={{ flexGrow: 1 }}>
+                      {detailedProduct.title}
+                    </Typography>
+                    <QuantityInput
+                      value={product.quantity}
+                      onChange={(newQuantity) => {
+                        // update cart
+                        if (newQuantity > 0) {
+                          setCartProductQuantity(cart, product.id, newQuantity);
+                        }
+                        /*
                     // remove product from cart
                     if (newQuantity <= 0) {
                       removeProductFromCart(cart, product.id);
                     }
                     */
-                  }}
-                />
-                <Typography variant="h5" style={{ flexGrow: 0 }}>
-                  {formatPrice(detailedProduct.price * product.quantity)}
-                </Typography>
-                <Button
-                  variant="contained"
-                  color="error"
-                  onClick={() => removeProductFromCart(cart, product.id)}
-                >
-                  Remove
-                </Button>
+                      }}
+                    />
+                    <Typography variant="h5" style={{ flexGrow: 0 }}>
+                      {formatPrice(detailedProduct.price * product.quantity)}
+                    </Typography>
+                    <Button
+                      variant="contained"
+                      color="error"
+                      onClick={() => removeProductFromCart(cart, product.id)}
+                    >
+                      Remove
+                    </Button>
+                  </Box>
+                ) : (
+                  <Box
+                    sx={{
+                      height: "150px",
+                      width: "100%",
+                      backgroundColor: "white",
+                      display: "flex",
+                      justifyContent: "center",
+                      alignItems: "center",
+                      boxShadow: 2,
+                    }}
+                  >
+                    <CircularProgress />
+                  </Box>
+                )}
               </div>
-            ) : (
-              <div
-                style={{
-                  height: "150px",
-                  width: "100%",
-                  backgroundColor: "white",
-                  display: "flex",
-                  justifyContent: "center",
-                  alignItems: "center",
-                }}
-              >
-                <CircularProgress />
-              </div>
-            )}
-          </div>
-        );
-      })}
+            );
+          })}
+        </div>
+      )}
       {cart.length > 0 && cart.length === cartDetails.length && (
         <div
           style={{

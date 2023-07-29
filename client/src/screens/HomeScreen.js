@@ -1,14 +1,7 @@
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { useTheme } from "@mui/material/styles";
-import {
-  Grid,
-  Card,
-  CardMedia,
-  CardContent,
-  ButtonBase,
-  Typography,
-} from "@mui/material";
+import { Grid, Card, CardContent, ButtonBase, Typography } from "@mui/material";
 import { connect } from "react-redux";
 
 import getProducts from "actions/getProducts";
@@ -34,17 +27,17 @@ const HomeScreen = ({ products, getProducts }) => {
       <Grid container spacing={2}>
         {products.map((product, index) => (
           <Grid item key={index} xs={12} sm={6} md={4} xl={3}>
-            <Card sx={{ borderRadius: 0, boxShadow: 0 }}>
+            <Card sx={{ height: "100%", borderRadius: 0, boxShadow: 2 }}>
               <ButtonBase
-                sx={{ display: "block", textAlign: "initial", width: "100%" }}
+                sx={{
+                  height: "100%",
+                  width: "100%",
+                  display: "flex",
+                  flexDirection: "column",
+                  textAlign: "initial",
+                }}
                 onClick={() => navigate(`/product/${product.id}`)}
               >
-                {/*
-                  sx={{
-                    height: 0,
-                    paddingTop: theme.custom.heightPercentRatios["1:1"],
-                  }}
-                */}
                 <div
                   title={product.title}
                   style={{
@@ -60,6 +53,8 @@ const HomeScreen = ({ products, getProducts }) => {
                 />
                 <CardContent
                   sx={{
+                    height: "100%",
+                    width: "100%",
                     display: "flex",
                     flexDirection: "column",
                     justifyContent: "space-between",

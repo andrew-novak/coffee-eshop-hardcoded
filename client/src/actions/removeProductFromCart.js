@@ -8,7 +8,7 @@ const removeProductFromCart = (cart, productId, optionalCartDetails) => (
   if (foundIndex > -1) {
     newCart.splice(foundIndex, 1);
   }
-  let newCartDetails = undefined;
+  let newCartDetails = [];
   if (optionalCartDetails) {
     newCartDetails = [...optionalCartDetails];
     newCartDetails.splice(foundIndex, 1);

@@ -1,20 +1,9 @@
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { useTheme } from "@mui/material/styles";
-import {
-  useMediaQuery,
-  Grid,
-  Container,
-  IconButton,
-  Card,
-  CardMedia,
-  Typography,
-  TextField,
-  Button,
-  ButtonBase,
-} from "@mui/material";
-import RemoveIcon from "@mui/icons-material/Remove";
-import AddIcon from "@mui/icons-material/Add";
+import { useMediaQuery, Typography, Button, Box } from "@mui/material";
+// RemoveIcon from "@mui/icons-material/Remove";
+// import AddIcon from "@mui/icons-material/Add";
 import { connect } from "react-redux";
 
 import getProduct from "actions/getProduct";
@@ -57,6 +46,7 @@ const HomeScreen = ({
           flexDirection: isMobileScreen && "column",
           alignItems: "flex-start",
           width: "100%",
+          //backgroundColor: "white",
         }}
       >
         {product.id && (
@@ -69,31 +59,34 @@ const HomeScreen = ({
               backgroundColor: "pink",
             }}
           >
-            <div
-              style={{
+            <Box
+              sx={{
                 paddingTop: theme.custom.heightPercentRatios["1:1"],
                 backgroundImage: `url(${getMediaFileUrl(
                   product.id,
                   product.mediaFilenames[0]
                 )})`,
                 backgroundSize: "cover",
+                boxShadow: 2,
               }}
             />
           </div>
         )}
         {/* Text & Button Section */}
-        <div
-          style={{
+        <Box
+          sx={{
             display: "flex",
             flexDirection: "column",
+            justifyContent: "space-between",
             width: "100%",
             //paddingTop: isMobileScreen && "24px",
             //paddingLeft: !isMobileScreen && "24px",
-            backgroundColor: "white",
             padding: "24px",
             paddingTop: "48px",
             paddingBottom: "48px",
             //justifyContent: "center",
+            backgroundColor: "white",
+            boxShadow: 2,
           }}
         >
           {/* <h1>Product ID: {productId}</h1> */}
@@ -243,7 +236,7 @@ const HomeScreen = ({
               </Button>
             </div>
           )}
-        </div>
+        </Box>
       </div>
     </Screen>
   );

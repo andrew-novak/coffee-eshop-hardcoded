@@ -15,10 +15,12 @@ router.post("/details", async (req, res, next) => {
   console.log("cart:", cart);
   // TODO: make sure passed cart is correct e.g. every obj contains id and quantity props
   try {
+    const ids = cart.map((product) => product.id);
     const cartProducts = await Product.find({
-      $in: { id: [cart.map((product) => product.id)] },
+      id: { $in: ids },
     });
-    if (cart.length !== cartProducts.length) throw new Error("");
+    if (cart.length !== cartProducts.length)
+      throw new Error("unable to find all products");
     const productsForClient = cartProducts.map(
       ({ id, title, description, price, mediaFilenames }) => ({
         id,

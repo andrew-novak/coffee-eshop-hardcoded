@@ -11,7 +11,16 @@ import PaymentSuccessScreen from "screens/PaymentSuccessScreen";
 import NotFoundScreen from "screens/NotFoundScreen";
 
 const App = () => (
-  <div style={{ height: "100%", backgroundColor: "pink" }}>
+  /* Background */
+  <div
+    style={{
+      height: "100%",
+      background:
+        "repeating-linear-gradient(45deg, #fab4b4 0, #fab4b4 10%, transparent 0, transparent 50%)",
+      backgroundSize: "2em 2em",
+      backgroundColor: "#fab9b9",
+    }}
+  >
     <StoreProvider store={store}>
       <ThemeProvider theme={theme}>
         <CssBaseline />
