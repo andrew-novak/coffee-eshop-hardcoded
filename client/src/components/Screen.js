@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { IconButton, Badge, Container } from "@mui/material";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
@@ -6,6 +7,7 @@ import InstagramIcon from "@mui/icons-material/Instagram";
 import { connect } from "react-redux";
 
 import shopIcon from "static/shopIcon.png";
+import NoSocialMediaPopup from "components/NoSocialMediaPopup";
 
 const navButtonSize = 59;
 const navPadding = 10;
@@ -18,6 +20,10 @@ const Screen = ({ children, maxWidth = 2000, cart }) => {
     (accumulator, product) => accumulator + product.quantity,
     0
   );
+
+  // No Social Media Popup
+  const [isPopupOpen, setIsPopupOpen] = useState(false);
+
   return (
     <div
       style={{
@@ -80,10 +86,14 @@ const Screen = ({ children, maxWidth = 2000, cart }) => {
             padding: navPadding,
           }}
         >
-          <IconButton size="large">
+          <NoSocialMediaPopup
+            isOpen={isPopupOpen}
+            handleClose={() => setIsPopupOpen(false)}
+          />
+          <IconButton size="large" onClick={() => setIsPopupOpen(true)}>
             <TwitterIcon fontSize="large" />
           </IconButton>
-          <IconButton size="large">
+          <IconButton size="large" onClick={() => setIsPopupOpen(true)}>
             <InstagramIcon fontSize="large" />
           </IconButton>
         </div>
