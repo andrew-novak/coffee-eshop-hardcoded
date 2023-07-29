@@ -4,6 +4,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 import store from "store";
 import theme from "theme";
+import { BASE_URL } from "constants/urls";
 import HomeScreen from "screens/HomeScreen";
 import ProductScreen from "screens/ProductScreen";
 import CartScreen from "screens/CartScreen";
@@ -24,7 +25,7 @@ const App = () => (
     <StoreProvider store={store}>
       <ThemeProvider theme={theme}>
         <CssBaseline />
-        <BrowserRouter>
+        <BrowserRouter basename={BASE_URL}>
           <Routes>
             <Route path="/" exact element={<HomeScreen />} />
             <Route

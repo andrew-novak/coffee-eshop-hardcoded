@@ -7,6 +7,7 @@ import InstagramIcon from "@mui/icons-material/Instagram";
 import { connect } from "react-redux";
 
 import shopIcon from "static/shopIcon.png";
+import { BASE_URL } from "constants/urls";
 import NoSocialMediaPopup from "components/NoSocialMediaPopup";
 
 const navButtonSize = 59;
@@ -66,9 +67,9 @@ const Screen = ({ children, maxWidth = 2000, cart }) => {
               backgroundImage: `url(${shopIcon})`,
               backgroundSize: "cover",
             }}
-            onClick={() => navigate("/")}
+            onClick={() => navigate(`${BASE_URL}/`)}
           ></IconButton>
-          <IconButton size="large" onClick={() => navigate("/cart")}>
+          <IconButton size="large" onClick={() => navigate(`${BASE_URL}/cart`)}>
             <Badge badgeContent={totalQuantity} color="primary">
               <ShoppingCartIcon fontSize="large" />
             </Badge>
