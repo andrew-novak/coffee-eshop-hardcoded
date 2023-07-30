@@ -12,9 +12,9 @@ Coffee Shop is an engaging portfolio website powered by Stripe, offering a delig
 3. Create `.env` file based on `example.env`, but replace `<bracket values>` with your values.
 
 - Make sure `NODE_ENV` is set to `"development"`
-- You can leave `COFFEE_ESHOP_HARDCODED_PROD_MEDIA` as an empty string (`""`)
+- You can leave `COFFEE_ESHOP_NO_ADMIN_PROD_MEDIA` as an empty string (`""`)
 - Use Stripe test key
-- Use localhost for `COFFEE_ESHOP_HARDCODED_CLIENT_URL`
+- Use localhost for `COFFEE_ESHOP_NO_ADMIN_CLIENT_URL`
 
 4. Run:
    `npm run start:all`
@@ -29,10 +29,10 @@ Coffee Shop is an engaging portfolio website powered by Stripe, offering a delig
 3. Set variables on your server based on `example.env` with your own production variables, e.g., in the default `~/.bashrc` or your custom `~/.bashrc.d` directory.
 
 - Make sure `NODE_ENV` is set to `"production"`
-- Rename the default `COFFEE_ESHOP_HARDCODED_MONGO_URL="mongodb://localhost:27017/coffeeEshopHardcodedDev"`.
-- Set `COFFEE_ESHOP_HARDCODED_PROD_MEDIA` to an absolute path of media directory on your server.
+- Rename the default `COFFEE_ESHOP_NO_ADMIN_MONGO_URL="mongodb://localhost:27017/coffeeEshopHardcodedDev"`.
+- Set `COFFEE_ESHOP_NO_ADMIN_PROD_MEDIA` to an absolute path of media directory on your server.
 - Use Stripe production key
-- Use production URL for `COFFEE_ESHOP_HARDCODED_CLIENT_URL`
+- Use production URL for `COFFEE_ESHOP_NO_ADMIN_CLIENT_URL`
 
 4. Navigate to the project's root directory.
 
