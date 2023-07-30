@@ -51,7 +51,7 @@ Coffee Shop is an engaging portfolio website powered by Stripe, offering a delig
 
 4. To set the homepage, use the command `json -I -f package.json -e "this.homepage=\"<YourHomepageHere>\""`. If the website is located in the root location, you can set it as the current directory with `json -I -f package.json -e "this.homepage=\".\""`. For websites in sublocations, specify the full URL like `json -I -f package.json -e "this.homepage=\"https://example.com/apps/coffee-eshop\""`.
 
-5. Build with this react environment variable, e.g.:
-   `REACT_APP_API_URL="https://example.com/api" npm run build`.
+5. Build with these react environment variables, e.g.:
+   `REACT_APP_API_URL="https://example.com/api" REACT_APP_MEDIA_URL="https://example.com/media" npm run build`.
 
 6. After the previously ran build command, you can rename and move the resulting `client/build` directory to a desired location (e.g., somewhere in `/usr/share/nginx`).
