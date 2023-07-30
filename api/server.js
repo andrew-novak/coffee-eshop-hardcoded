@@ -35,6 +35,6 @@ if (NODE_ENV === "development") {
 
 app.use("/", rootRouter);
 
-app.listen(PORT, () => console.log(`Server started on port: ${PORT}`));
+app.listen(API_PORT, () => console.log(`Server started on port: ${API_PORT}`));
 
 module.exports = app;
