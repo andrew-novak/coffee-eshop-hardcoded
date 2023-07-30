@@ -37,7 +37,7 @@ const HomeScreen = ({ products, getProducts }) => {
                   flexDirection: "column",
                   textAlign: "initial",
                 }}
-                onClick={() => navigate(`${BASE_URL}/product/${product.id}`)}
+                onClick={() => navigate(`/product/${product.id}`)}
               >
                 <div
                   title={product.title}

@@ -1,5 +1,4 @@
 import { useEffect } from "react";
-import { useNavigate } from "react-router-dom";
 import { useTheme } from "@mui/material/styles";
 import { Typography, Box, Button } from "@mui/material";
 import CircularProgress from "@mui/material/CircularProgress";
@@ -22,7 +21,6 @@ const CartScreen = ({
   removeProductFromCart,
   goToCheckout,
 }) => {
-  const navigate = useNavigate();
   const theme = useTheme();
 
   useEffect(() => {

@@ -67,9 +67,9 @@ const Screen = ({ children, maxWidth = 2000, cart }) => {
               backgroundImage: `url(${shopIcon})`,
               backgroundSize: "cover",
             }}
-            onClick={() => navigate(`${BASE_URL}/`)}
+            onClick={() => navigate("/")}
           ></IconButton>
-          <IconButton size="large" onClick={() => navigate(`${BASE_URL}/cart`)}>
+          <IconButton size="large" onClick={() => navigate("/cart")}>
             <Badge badgeContent={totalQuantity} color="primary">
               <ShoppingCartIcon fontSize="large" />
             </Badge>
