@@ -4,8 +4,8 @@ const cors = require("cors");
 const rootRouter = require("./routes");
 
 const NODE_ENV = process.env.NODE_ENV;
-const MONGO_URL = process.env.STRIPE_ESHOP_NO_ADMIN_PANEL_MONGO_URL;
-const PORT = process.env.STRIPE_ESHOP_NO_ADMIN_PANEL_API_PORT;
+const MONGO_URL = process.env.COFFEE_ESHOP_HARDCODED_MONGO_URL;
+const PORT = process.env.COFFEE_ESHOP_HARDCODED_API_PORT;
 
 if (NODE_ENV !== "development" && NODE_ENV !== "production")
   throw new Error("Set NODE_ENV to 'development' or 'production'");
