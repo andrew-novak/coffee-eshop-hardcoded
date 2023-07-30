@@ -1,13 +1,11 @@
 const express = require("express");
 const path = require("path");
 
+const { NODE_ENV, PROD_MEDIA } = require("../constants/env.js");
 // import subroutes
 const products = require("./products");
 const cart = require("./cart");
 const createCheckoutSession = require("./createCheckoutSession");
-
-const NODE_ENV = process.env.NODE_ENV;
-const PROD_MEDIA = process.env.COFFEE_ESHOP_HARDCODED_PROD_MEDIA;
 
 const router = express.Router();
 

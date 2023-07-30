@@ -1,8 +1,7 @@
 const stripe = require("../stripe");
 
 const Product = require("../models/Product");
-
-const CLIENT_URL = process.env.COFFEE_ESHOP_HARDCODED_CLIENT_URL;
+const { CLIENT_URL } = require("../constants/env.js");
 
 const createCheckoutSession = async (req, res) => {
   const { cart } = req.body;

@@ -1,6 +1,6 @@
 const Stripe = require("stripe");
 
-const STRIPE_SECRET = process.env.COFFEE_ESHOP_HARDCODED_STRIPE_SECRET;
+const STRIPE_SECRET = require("./constants/env.js");
 
 const stripe = Stripe(STRIPE_SECRET);
 
