@@ -32,7 +32,7 @@ router.get("/", async (req, res, next) => {
 router.get("/:productId", async (req, res, next) => {
   const { productId } = req.params;
   try {
-    const product = await Product.findOne({ productId });
+    const product = await Product.findOne({ id: productId });
     console.log(`Product with productId ${productId} found`);
     const { title, description, price, mediaFilenames } = product;
     const productForClient = {
