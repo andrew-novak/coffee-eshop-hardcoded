@@ -43,10 +43,9 @@ const CartScreen = ({
   // vertical margins around summary info section (subtotal/shipping/total section)
   const summaryInfoMargins = "24px";
 
+  //const isLargestScreen = useMediaQuery(theme.breakpoints.up("md"));
   const isLargerScreen = useMediaQuery("(min-width: 700px)");
   const isLargestScreen = useMediaQuery("(min-width: 1100px)");
-  //const isLargerScreen = useMediaQuery(theme.breakpoints.up("sm"));
-  //const isLargestScreen = useMediaQuery(theme.breakpoints.up("md"));
 
   return (
     <Screen>
@@ -225,7 +224,7 @@ const CartScreen = ({
         >
           <div
             style={{
-              width: "340px",
+              width: isLargerScreen ? "340px" : "100%",
             }}
           >
             <div
