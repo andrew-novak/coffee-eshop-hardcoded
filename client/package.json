@@ -1,6 +1,6 @@
 {
-  "name": "stripe-eshop-no-admin-panel-client",
-  "version": "0.1.0",
+  "name": "coffee-shop-client",
+  "version": "1.0.0",
   "private": true,
   "dependencies": {
     "@emotion/react": "^11.10.5",

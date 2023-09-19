@@ -1,5 +1,5 @@
 {
-  "name": "stripe-eshop-no-admin-panel-api",
+  "name": "coffee-shop-api",
   "version": "1.0.0",
   "private": true,
   "scripts": {
@@ -16,6 +16,7 @@
     "cors": "^2.8.5",
     "express": "^4.18.2",
     "mongoose": "^6.9.0",
+    "nodemailer": "^6.9.5",
     "stripe": "^11.8.0"
   }
 }

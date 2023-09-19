@@ -6,7 +6,6 @@ import { connect } from "react-redux";
 
 import getProducts from "actions/getProducts";
 import Screen from "components/Screen";
-import { BASE_URL } from "constants/urls";
 import getMediaFileUrl from "helpers/getMediaFileUrl";
 
 const HomeScreen = ({ products, getProducts }) => {

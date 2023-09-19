@@ -7,7 +7,6 @@ import InstagramIcon from "@mui/icons-material/Instagram";
 import { connect } from "react-redux";
 
 import shopIcon from "static/shopIcon.png";
-import { BASE_URL } from "constants/urls";
 import NoSocialMediaPopup from "components/NoSocialMediaPopup";
 
 const navButtonSize = 59;
