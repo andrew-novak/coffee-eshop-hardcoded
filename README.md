@@ -1,6 +1,16 @@
+<img src="https://github.com/andrew-novak/coffee-shop/raw/main/client/src/static/shopIcon.png" alt="Coffee Shop web app logo" width="112" height="112">
+
 # Coffee Shop
 
-Coffee Shop is an engaging portfolio website powered by Stripe, offering a delightful online shopping experience for coffee enthusiasts, where they can explore and purchase a variety of quality coffee products.
+[Demo](https://andrewnovak.co.uk/demos/coffee-shop)
+
+A demo web app of a coffee shop specializing in the sale of whole coffee beans, both regular and decaffeinated.
+
+The app utilizes the Stripe platform, operates in its test mode, allowing users to make test purchases.
+
+Products data displayed on the website itself is maintained on a MongoDB database, while checkout data is securely stored on the Stripe platform.
+
+Transactions made by customers are accessible to a shop owner on the Stripe website.
 
 ## To run API and client in development:
 
